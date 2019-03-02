@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
         unsigned char r;
     };
 
-    // citire bmp intrare
+    // read input .bmp
 
     FILE *bmpin = fopen(argv[1], "rb");
 
@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
 
     fseek(bmpout, bmpf.imageDataOffset, SEEK_SET);
 
-    // calcul bmp black and white
+    // calculating black and white .bmp
 
     struct pixel *pixbw;
     pixbw = calloc((bmpi.height + 2) * (bmpi.width + 2), sizeof(struct pixel));
@@ -86,7 +86,7 @@ int main(int argc, char *argv[]) {
 
     fclose(bmpout);
 
-    // calcul si scriere edge detection pt kernel
+    // calculating edge detection .bmp with kernel:
     /*
        -1	-1	-1
        -1	 8	-1
@@ -133,7 +133,7 @@ int main(int argc, char *argv[]) {
             pixf[i * bmpi.width + j].b = gray;
             pixf[i * bmpi.width + j].r = gray;
 
-            //marginea stanga
+            // left border
             if ((j == 1 && i != bmpi.height) ||
                 (j == 1 && i != 1)) {
 
@@ -162,7 +162,7 @@ int main(int argc, char *argv[]) {
                 pixf[i * bmpi.width + j].r = gray;
             }
 
-            //marginea dreapta
+            // right border
             if ((j == bmpi.width && i != bmpi.height) ||
                 (j == bmpi.width && i != 1)) {
 
@@ -201,7 +201,7 @@ int main(int argc, char *argv[]) {
 
     fclose(bmpout2);
 
-    // calcul si scriere edge detection pt kernel
+    // calculating edge detection .bmp with kernel:
     /*
        0	 1	 0
        1	-4	 1
@@ -241,7 +241,7 @@ int main(int argc, char *argv[]) {
             pixf[i * bmpi.width + j].b = gray;
             pixf[i * bmpi.width + j].r = gray;
 
-            //marginea stanga
+            // left border
             if ((j == 1 && i != bmpi.height) ||
                 (j == 1 && i != 1)) {
 
@@ -268,7 +268,7 @@ int main(int argc, char *argv[]) {
                 pixf[i * bmpi.width + j].r = gray;
             }
 
-            //marginea dreapta
+            // right border
             if ((j == bmpi.width && i != bmpi.height) ||
                 (j == bmpi.width && i != 1)) {
 
@@ -305,7 +305,7 @@ int main(int argc, char *argv[]) {
 
     fclose(bmpout3);
 
-    // calcul si scriere edge detection pt kernel
+    // calculating edge detection .bmp with kernel:
     /*
        1	 0	-1
        0	 0	 0
@@ -344,7 +344,7 @@ int main(int argc, char *argv[]) {
             pixf[i * bmpi.width + j].b = gray;
             pixf[i * bmpi.width + j].r = gray;
 
-            //marginea stanga
+            // left border
             if ((j == 1 && i != bmpi.height) ||
                 (j == 1 && i != 1)) {
                 g1 =
@@ -368,7 +368,7 @@ int main(int argc, char *argv[]) {
                 pixf[i * bmpi.width + j].r = gray;
             }
 
-            //marginea dreapta
+            // right border
             if ((j == bmpi.width && i != bmpi.height) ||
                 (j == bmpi.width && i != 1)) {
                 g1 =
