@@ -6,3 +6,4 @@ This C code converts your .bmp image to a greycale version, and 3 versions of ed
 make
 ./imgp <your image>.bmp
 ```
+dateOfCode : Dec - 2016
